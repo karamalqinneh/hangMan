@@ -123,3 +123,8 @@ header .left nav li a {
   top: 25px;
   left: 35%;
 }
+
+.chosen {
+  pointer-events: none;
+  opacity: 0.3;
+}

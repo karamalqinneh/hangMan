@@ -5,6 +5,7 @@ let randomWordsArr = ["head", "hike", "pack" , "calculator", "trivia", "charger"
 let optionsDiv = document.querySelector(".options")
 let showcase = document.querySelector(".showcase")
 let image = document.querySelector(".change")
+let sol = "";
 let userChances = 0;
 
 // options generator 
@@ -41,6 +42,10 @@ function showcaseGenerator (arr) {
     return [str, showcaseDiv];
 }
 
+// duplicates finder 
+let findDuplicates = arr => arr.filter((item, index) => arr.indexOf(item) != index)
+
+
 // random word chooser 
 
 function randomWord (arr) {
@@ -61,10 +66,15 @@ function appender (e) {
             console.log("change the photo")
             userChances++
         } else {
+            sol += `${event.srcElement.innerHTML}`
             let valueShowerIndex = (currentSolution[0].indexOf(event.srcElement.innerHTML));
             currentSolution[1][valueShowerIndex] = `<div class="solution">${event.srcElement.innerHTML}</div>`;
+            event.srcElement.classList.add("chosen")
             console.log(currentSolution[1])
             showcase.innerHTML = currentSolution[1].join();
+            if (sol == currentSolution[0]) {
+                window.alert("congrats! You did it.")
+            };
         }
     } else {
         window.alert(`Try again thw word was ${currentSolution[0]}`)     
@@ -72,3 +82,5 @@ function appender (e) {
 
    
 }
+
+
